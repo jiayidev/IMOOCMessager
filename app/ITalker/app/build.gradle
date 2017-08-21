@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "net.brian.italker.push"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //个推相关参数
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "xDDTMr07fFA5ehDzTwWxm4",
+                GETUI_APP_KEY   : "kVlUxNKOAn92FaEjWWS2x8",
+                GETUI_APP_SECRET: "W8cagHWeWDAWKLBe0ZfUg7",
+                PACKAGE_NAME    : applicationId
+        ]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile project(':factory')
+
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
+    compile "com.android.support:design:$rootProject.ext.supportVersion"
+
+    // 个推
+    compile "com.getui:sdk:$rootProject.ext.getuiVersion"
+
+    /*常用UI*/
+    compile "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
+    compile "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
+
+    /*圆形图片*/
+    compile "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewVersion"
+    /*图片缓存*/
+    compile "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+
+    /*控件注解*/
+    compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+    /*图片裁剪*/
+    compile "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
+    /*简化权限*/
+    compile "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
+
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-v4:25.3.1'
+    testCompile 'junit:junit:4.12'
+}
