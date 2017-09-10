@@ -1,5 +1,6 @@
 package net.brian.italker.factory.model.card;
 
+import net.brian.italker.factory.model.Author;
 import net.brian.italker.factory.model.db.User;
 
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.Date;
  * Created by with_you on 2017/7/27.
  */
 
-public class UserCard {
+public class UserCard implements Author{
     private String id;
     private String name;
     private String phone;

@@ -130,6 +130,14 @@ public abstract class RecyclerAdapter<Data>
     }
 
     /**
+     * 返回整个集合
+     * @return
+     */
+    public List<Data> getItems() {
+        return mDataList;
+    }
+
+    /**
      * 插入一个数据并通知插入
      *
      * @param data Data
@@ -290,6 +298,7 @@ public abstract class RecyclerAdapter<Data>
 
     /**
      * 对回调接口做一次实现 AdapterListener
+     *
      * @param <Data>
      */
     public static class AdapterListenerImpl<Data> implements AdapterListener<Data> {
